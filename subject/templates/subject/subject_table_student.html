@@ -1,0 +1,36 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col s12 m6 l12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+            <table>
+                <thead>
+                  <tr>
+                      <th>Subject Name</th>
+                      <th>Course</th>
+                  </tr>
+                </thead>
+                {% for subject in current_subject %}
+                <tbody>
+                    
+                  <tr>
+                    <td><a href="{% url 'subject-detail' subject.id %}">{{subject.subject_name}}</a></td>
+                    <td><a href="{% url 'course-detail-student' subject.course.id %}">{{subject.course}}</a></td>   
+                  </tr>
+                  
+                </tbody>
+                {% endfor %}
+              </table>  
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+{% endblock content %}

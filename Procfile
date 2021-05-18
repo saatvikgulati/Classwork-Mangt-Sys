@@ -1,0 +1,1 @@
+web: gunicorn lms1.wsgi

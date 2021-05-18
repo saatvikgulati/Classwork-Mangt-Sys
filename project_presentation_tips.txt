@@ -1,0 +1,25 @@
+
+1st part
+introduction
+need 
+features (login,view assignments,status,post new assign,submits answer,review answers,etc)
+snapshots 
+
+implementation overview 
+
+2nd part -usecases activity diagrams 
+teacher submits an assign
+student submits answer to assign
+
+teacher accepts submitted answer
+student can view marks scored 
+
+3rd part - ER diagram
+
+4th scope - more features
+
+5th challenges 
+user types
+viewing restrictions 
+database integrity 
+media 

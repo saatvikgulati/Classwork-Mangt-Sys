@@ -1,0 +1,58 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+
+{% for post in posts %}
+<div class="row">
+    <div class="col s12 m6 l12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Assignment Name: {{post.title}}</span>
+          <span class="card-title" >Faculty: <a href ="#">{{post.author.teacher.username}}</a></span>
+          <span class="card-title">Posted On: {{post.date_posted}}</span>
+          <span class="card-title">Due Date: {{post.expires_on}}</span>
+          <span class="card-title">Currently Active: {{post.currently_active}}</span>
+          <span class="card-title">Comment: {{post.content}} </span>
+          <a href="{{post.pdf.url}}" target="_blank">Pdf: {{post.pdf}} </p></a>
+        </div>
+        <div class="card-action">
+          {% if is_student %}
+          <!--<a href="{% url 'submit-answer' post.id %}">Take Up</a>-->
+          <a href="{% url 'assignment-detail' post.id %}"><i class='material-icons'>info</i></a>
+          {% else %}
+          <a href="{% url 'assignment-detail' post.id %}"><i class='material-icons'>info</i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="row">
+  <div class="col s12 m6 l12">
+  <div class="card blue-grey darken-1">
+  <div class="card-content white-text">
+ {% if posts.has_other_pages %}
+  <ul class="pagination center">
+  {% if posts.has_previous %}
+  <!--<li><a href="?page=1">&laquo;</a></li>-->
+  <li><a href="?page={{posts.previous_page_number }}"><span class="card-title">&laquo;</span></a></li>
+  {% else %}
+  <li class="disabled"><span>&laquo;</span></li>
+  {% endif %}
+  {% for i in posts.paginator.page_range %}
+  {% if posts.number == i %}
+  <li class="active"><span class="card-title">&nbsp;{{i}} <span class="sr-only">&nbsp;</span></span></li>
+  {% else %}
+  <li><a href="?page={{i}}"><span class="card-title">{{i}}</span></a></li>
+  {% endif %}
+  {% endfor %}
+  {% if posts.has_next %}
+  <li><a href="?page={{posts.next_page_number}}"><span class="card-title">&raquo;</span></a></li>
+  {% else %}
+  <li class="disabled"><span>&raquo;</span></li>
+  {% endif %}
+  </ul>
+  {% endif %}
+  </div>
+  </div>
+  </div>
+{% endblock content %}

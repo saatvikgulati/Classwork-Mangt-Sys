@@ -1,0 +1,52 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col s12 m6 l12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+            <table>
+                <thead>
+                  <tr>
+                      <th>Student Name</th>
+                      <th>Year</th>
+                      <th>Course</th>
+                      <th>Semester</th>
+                      <th>Assignments Accepted</th>
+                      <th>Total Marks</th>
+                      <th>View Answers</th>
+                      <th>Pending Answers</th>
+                      <th>Accepted Answers</th>
+                      <th>Rejected Answers</th>
+                  </tr>
+                </thead>
+                {% for student in students %}
+                <tbody>
+                    
+                  <tr>
+                    <td><a href="{% url 'my_profile' %}">{{student.student.username}}</a></td>
+                    <td>{{student.year}}</td>
+                    <td>{{student.assigned_course}}</td>
+                    <td>{{student.sem.sem_no}}</td>
+                    <td>{{student.assignment_accepted}}</td>
+                    <td>{{student.marks}}</td>
+                    <td><a href="{% url 'answers-by-faculty-dashboard' student.id %}" style="color:brown"><b>View Answers</b></a></td>
+                    <td><a href="{% url 'pending-student-answer' student.id %}"><b>Pending Answers</b></a></td>  
+                    <td><a href="{% url 'accept-student-answer' student.id %}" style="color:lime"><b>Accepted Answers</b></td>
+                    <td><a href="{% url 'reject-student-answer' student.id %}" style= "color:red"><b>Rejected Answers</b></a></td>   
+                  </tr>
+                  
+                </tbody>
+                {% endfor %}
+              </table>  
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+{% endblock content %}

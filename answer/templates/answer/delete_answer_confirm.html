@@ -1,0 +1,12 @@
+{%extends 'assignment/base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+    <div class="content_section">
+            <div class="form-group">
+                <a class="btn btn-outline-info waves-effect waves-light" href="{% url 'delete-answer' answer.id %}">
+                <i class="material-icons">delete_forever</i>
+                </a>
+                <a class='btn btn-outline-info waves-effect waves-light' href="{% url 'answer-detail' answer.id %}">No</a>
+            </div>
+    </div>
+{%endblock content%}

@@ -1,0 +1,38 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+{%for answer in answers %}
+<div class="row">
+    <div class="col s12 m6 l12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+            <span class="card-title" href="#">Title:
+                {{answer.title}}</span>
+                <span class="card-title">Author: {{answer.author}}</span>
+                <span class="card-title">Assignment: <a href="{% url 'assignment-detail' answer.assignment.id %}">{{answer.assignment}}</a></span>
+                <p>Course {{answer.course}}</p>
+                <p> Subject {{answer.subject}}</p> 
+                <p>Message: {{answer.content}}</p>
+                <p>Pdf: <a href="{{answer.pdf.url}}" target="_blank">{{answer.pdf}}</a></p>  
+                <p>Posted on: {{answer.date_posted}}</p> 
+                <p>Status: {{answer.status}}</p>  
+            </div>
+            <div class="card-action">
+            {% if teacher_is_staff  %}
+          {% if answer.status != 'AC' and answer.status != 'RJ' and answer.assignment.currently_active %}
+          <a href="{% url 'answer-detail' answer.id %}"><i class='material-icons'>info</i></a>
+          <a href="{% url 'marks-form' answer.id %}">Accept Answer</a>
+          <a href="{% url 'reject-answer-confirm' answer.id %}">Reject Answer</a>
+          <a href="{% url 'student-answer-list-by-teachers' user.id %}">Go back</a>
+          {% else %}
+          <a href="{% url 'answer-detail' answer.id %}"><i class='material-icons'>info</i></a>
+          <a href="{% url 'student-answer-list-by-teachers' user.id %}">Go back</a>
+          {% endif %}
+        {% elif is_student %}
+        <!--<a href="{% url 'answer-detail' answer.id %}"><i class='material-icons'>info</i></a>-->
+        {% endif %}
+        </div> 
+    </div>
+    </div>
+    </div>             
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,101 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Students</span>
+          <p>See Details of different students</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'students-table' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Assignment</span>
+          <p>See students assignments</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'faculty-assignment-table' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Faculty in University</span>
+          <p>View Faculties in University</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'faculty-table' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Student Profiles</span>
+          <p>View Students Profile</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'student-profiles' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Courses</span>
+          <p>View Courses</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'course-table' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Semesters</span>
+          <p>View Semesters</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'course-table' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Notes</span>
+          <p>View Notes</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'faculty-notes' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Create Notes</span>
+          <p>Create Notes</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'create-notes' %}"><i class='material-icons'>info</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

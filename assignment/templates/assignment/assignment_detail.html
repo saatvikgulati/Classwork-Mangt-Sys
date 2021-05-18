@@ -1,0 +1,37 @@
+{% extends 'assignment/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col s12 m6 l12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Title: {{object.title}}</span>
+          <span class="card-title">Author: <a href="#">{{object.author.teacher.username}}</a></span>
+          <span class="card-title">Posted On: {{object.date_posted}}</span>
+          <span class="card-title">Expires On: {{object.expires_on}}</span>
+          <span class="card-title">Status: {{object.currently_active}}</span>
+          <p>Message: {{object.content}} </p>
+          <a href="{{object.pdf.url}}" target="_blank">Pdf: {{object.pdf}} </p></a>
+        </div>
+        <div class="card-action">
+            {% if user.is_authenticated and teacher_is_staff %}
+            <a href="{% url 'assignment-answers-list' object.id %}"><i class='material-icons'>assignment_turned_in</i></a>
+            <a href="{% url 'faculty-dashboard' %}">Go back to the List</a>
+            {% if object.currently_active and object.author == teacher%}
+            <a href="{% url 'update-assignment' object.id %}"><i class='material-icons'>update</i></a>
+            {% endif %}
+            {% if object.author == teacher %}
+            <a href="{% url 'delete-assignment-confirm' object.id %}"><i class='material-icons'>delete_forever</i></a>
+            {% endif %}
+            {% elif user.is_authenticated and is_student %}
+            <a href="{% url 'submit-answer' object.id %}"><i class='material-icons'>assignment_turned_in</i></a>
+            <a href="{% url 'student-dashboard' %}">Go back to the List</a>
+            <a href="{% url 'assignment-home' %}">Student Status {{is_student}}</a>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

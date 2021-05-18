@@ -1,0 +1,24 @@
+{%extends 'assignment/base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col s12 m6 l4">
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <center><span class="card-title">Confirm?</span></center>
+                <div class="form-group" >
+                    <center>
+                    <a class="btn btn-outline-info waves-effect waves-light" href="{% url 'delete-assignment' object.id %}">
+                    <i class="material-icons">delete_forever</i>
+                    </a>
+                    <a class='btn btn-outline-info waves-effect waves-light' href="{% url 'assignment-detail' object.id %}">No</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+      </div>
+{%endblock content%}
